@@ -1,0 +1,11 @@
+---
+## example credentials for mercedes developer api
+scopes: ['mb:vehicle:mbdata:fuelstatus', 'offline_access']
+# client_id and client_secret can be found in the 'CONSOLE' of the MB API
+# https://developer.mercedes-benz.com/console
+client_id: ''
+client_secret: ''
+# vehicle identification number (vin) of your own vehicle that is connected to your Mercedes me and Mercedes Developer API account
+vin: W**********
+# redirect address for oauth2 authorization workflow / needs to be correctly set in the MB DEv API Console
+redirect_uri: 'http://localhost:8081'
