@@ -1,5 +1,7 @@
 ## openAPI libarary imports
 from lib.fuel_status.client import *
+from lib.lock_status.client import *
+
 ## general imports
 import yaml
 import asyncio
@@ -9,26 +11,6 @@ import os
 
 pp = pprint.PrettyPrinter(indent=2)
 parser = argparse.ArgumentParser("Mercedes API Client")
-
-if (__name__ == '__main__'):
-
-    client = FuelStatusApiClient()
-    config = parse_config_file()
-
-    ## start data retrieval
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-
-    # oauth2 auth
-    provider = loop.run_until_complete(client.provide_o_auth2_authorization(scopes=config["scopes"],
-                                                                            redirect_uri=config["redirect_uri"],
-                                                                            client_id=config["client_id"],
-                                                                            client_secret=config["client_secret"]))
-
-    # get results for fuel status container
-    result = loop.run_until_complete(client.get_resources_for_container_id_using_ge_t(vehicle_id=config["vin"], access_token=provider.manager._access_token))
-    pp.pprint(result)
-
 
 def parse_config_file():
     ### Parse config file path
@@ -50,3 +32,22 @@ def parse_config_file():
         except yaml.YAMLError as exc:
             print("Config file cannot be opened. Please check syntax!")
             print(exc)
+
+if (__name__ == '__main__'):
+
+    client = FuelStatusApiClient()
+    config = parse_config_file()
+
+    ## start data retrieval
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    # oauth2 auth
+    provider = loop.run_until_complete(client.provide_o_auth2_authorization(scopes=config["scopes"],
+                                                                            redirect_uri=config["redirect_uri"],
+                                                                            client_id=config["client_id"],
+                                                                            client_secret=config["client_secret"]))
+
+    # get results for fuel status container
+    result = loop.run_until_complete(client.get_resources_for_container_id_using_ge_t(vehicle_id=config["vin"], access_token=provider.manager._access_token))
+    pp.pprint(result)

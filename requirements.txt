@@ -1,0 +1,4 @@
+pyyaml
+asyncio
+openapi-parser
+oauth2-client

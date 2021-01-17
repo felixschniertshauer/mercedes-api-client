@@ -5,7 +5,12 @@ Client library that retrieves data from the [Mercedes Developer API](https://dev
 ## Installation
 
 ### Required packages
-TODO
+
+Python 3.7.3
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
@@ -31,6 +36,14 @@ redirect_uri: 'http://localhost:8081'
 python client_api.py
 
 ```
+
+### Example
+
+![Example usage of api client](img/mercedes-api_client_example.png "Example usage of mercedes api client")
+
+## Affiliation
+
+    This project is a non-commercial hobby project and in no way officially affiliated with Daimler AG or Mercedes-Benz AG.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
